@@ -140,12 +140,12 @@ long LinuxParser::UpTime(int pid) {
   string line;
   string value;
   std::ifstream stream(kProcDirectory + pid_str + kStatFilename);
-  cout << "Process id " << pid_str << std::endl;
+  std::cout << "Process id " << pid_str << std::endl;
   if (stream.is_open()) {
     std::getline(stream, line);
     std::istringstream line_stream(line);
     while (line_stream >> value) {
-      cout << value << std::endl;
+      std::cout << value << std::endl;
     }
   }
   // long processUptimeMillis = stol(values[21]);
