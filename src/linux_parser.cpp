@@ -135,18 +135,19 @@ string LinuxParser::Uid(int pid[[maybe_unused]]) { return string(); }
 // REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::User(int pid[[maybe_unused]]) { return string(); }
 
-// TODO not done
 long LinuxParser::UpTime(int pid) {
   string pid_str = to_string(pid);
   string line;
   string value;
   std::ifstream stream(kProcDirectory + pid_str + kStatFilename);
+  cout << "Process id " << pid_str << std::endl;
   if (stream.is_open()) {
     std::getline(stream, line);
     std::istringstream line_stream(line);
     while (line_stream >> value) {
-      
+      cout << value << std::endl;
     }
   }
-  return LinuxParser::UpTime(); 
+  // long processUptimeMillis = stol(values[21]);
+  return 0;//LinuxParser::UpTime() - (processUptimeMillis/100); 
 }
